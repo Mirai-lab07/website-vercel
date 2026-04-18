@@ -270,16 +270,22 @@
       let calendar;
 
       document.addEventListener("DOMContentLoaded", function () {
-        const calendarEl = document.getElementById("calendar");
-        calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: "dayGridMonth",
-          selectable: true,
-          unselectAuto: false,
-          headerToolbar: {
-            left: "prev,next today",
-            center: "title",
-            right: "",
-          },
+          // --- SET TARIKH SEMASA PADA INPUT ---
+          const todayDate = new Date().toISOString().split('T')[0];
+          document.getElementById('input-start').value = todayDate;
+          document.getElementById('input-end').value = todayDate;
+
+          const calendarEl = document.getElementById("calendar");
+          calendar = new FullCalendar.Calendar(calendarEl, {
+              initialView: "dayGridMonth",
+              nowIndicator: true, // Tunjukkan penunjuk masa sekarang
+              selectable: true,
+              unselectAuto: false,
+              headerToolbar: {
+                  left: "prev,next today",
+                  center: "title",
+                  right: "",
+              },
 
           dayCellDidMount: function (info) {
             const dateStr = info.date.toISOString().split("T")[0];
