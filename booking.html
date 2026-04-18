@@ -264,7 +264,7 @@
     <script>
       // --- MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI SINI ---
       const SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbwIeMT1ibUo3pUHXCwFdyXUw6fxqNKK834VrRXteO-XM6WJsCMx3bOho1A3Rt3ZeAhOQw/exec";
+        "https://script.google.com/macros/s/AKfycbyCi6HwpiZ738v0vwyur2LiG2DV-Av1zTmYUpj9AhITqexOPN41OTJw468sf_1Dbt435g/exec";
 
       let bookedDates = [];
       let calendar;
@@ -402,12 +402,20 @@
         };
 
         try {
-          // 1. Simpan ke Google Sheets
-          await fetch(SCRIPT_URL, {
+          // 1. Simpan ke Google Sheets (Guna format URLSearchParams untuk kestabilan)
+          const formData = new URLSearchParams();
+          formData.append("name", name);
+          formData.append("phone", phone);
+          formData.append("start", startDate);
+          formData.append("end", endDate);
+
+          fetch(SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", // Penting untuk Google Apps Script
-            cache: "no-cache",
-            body: JSON.stringify(bookingData),
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData.toString(),
           });
 
           // 2. Format WhatsApp
