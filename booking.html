@@ -264,28 +264,28 @@
     <script>
       // --- MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI SINI ---
       const SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbw-7BeTq_lpVLdVD5Si0tJMx1TdXuuitb4jukgO9dhixhNT-k4cV6K294ZkfSJQ2UCnaQ/exec";
+        "https://script.google.com/macros/s/AKfycbwIeMT1ibUo3pUHXCwFdyXUw6fxqNKK834VrRXteO-XM6WJsCMx3bOho1A3Rt3ZeAhOQw/exec";
 
       let bookedDates = [];
       let calendar;
 
       document.addEventListener("DOMContentLoaded", function () {
-          // --- SET TARIKH SEMASA PADA INPUT ---
-          const todayDate = new Date().toISOString().split('T')[0];
-          document.getElementById('input-start').value = todayDate;
-          document.getElementById('input-end').value = todayDate;
+        // --- SET TARIKH SEMASA PADA INPUT ---
+        const todayDate = new Date().toISOString().split("T")[0];
+        document.getElementById("input-start").value = todayDate;
+        document.getElementById("input-end").value = todayDate;
 
-          const calendarEl = document.getElementById("calendar");
-          calendar = new FullCalendar.Calendar(calendarEl, {
-              initialView: "dayGridMonth",
-              nowIndicator: true, // Tunjukkan penunjuk masa sekarang
-              selectable: true,
-              unselectAuto: false,
-              headerToolbar: {
-                  left: "prev,next today",
-                  center: "title",
-                  right: "",
-              },
+        const calendarEl = document.getElementById("calendar");
+        calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          nowIndicator: true, // Tunjukkan penunjuk masa sekarang
+          selectable: true,
+          unselectAuto: false,
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: "",
+          },
 
           dayCellDidMount: function (info) {
             const dateStr = info.date.toISOString().split("T")[0];
@@ -421,7 +421,7 @@
             `• *Total Harga: RM ${selectedRange.totalPrice}*%0A%0A` +
             `Tempahan telah direkodkan dalam sistem.`;
 
-          const myPhoneNumber = "601123180399"; 
+          const myPhoneNumber = "601123180399";
 
           const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${message}`;
 
