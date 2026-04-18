@@ -49,10 +49,9 @@ function scrollToSection(event) {
     }
 }
 
-// Intersection Observer untuk animasi kad portfolio
-const portfolioSection = document.getElementById('portfolio-section');
-if (portfolioSection) {
-    const projectCards = portfolioSection.querySelectorAll('.project-card');
+// Intersection Observer untuk animasi semua .project-card
+const projectCards = document.querySelectorAll('.project-card');
+if (projectCards.length > 0) {
     const cardObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -74,7 +73,7 @@ if (portfolioSection) {
                 }
             }
         });
-    }, { threshold: 0.1 }); // Trigger when 10% of the card is visible
+    }, { threshold: 0.1 });
 
     projectCards.forEach(card => {
         cardObserver.observe(card);
