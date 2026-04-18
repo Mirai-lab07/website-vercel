@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewa Kamera - Booking System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            background-image: url('image/background-1.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Tanda X untuk tarikh penuh */
+        .booked-date {
+            position: relative;
+            background: rgba(255, 0, 0, 0.1) !important;
+            cursor: not-allowed !important;
+        }
+        .booked-date::after {
+            content: 'X';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff4444;
+            font-size: 2em;
+            font-weight: 900;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .fc-theme-standard td, .fc-theme-standard th {
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .fc .fc-button-primary {
+            background-color: #007aff !important;
+            border-color: #007aff !important;
+        }
+
+        .fc .fc-daygrid-day-number { color: #fff; padding: 10px; }
+        .fc-day-today { background: rgba(0, 122, 255, 0.1) !important; }
+        .fc-highlight { background: rgba(0, 122, 255, 0.3) !important; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto mb-6">
+        <a href="index.html" class="inline-flex items-center text-sm font-semibold text-white/70 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Kembali ke Laman Utama
+        </a>
+    </div>
+
+    <div class="max-w-6xl mx-auto glass rounded-3xl shadow-2xl overflow-hidden border border-white/10">
+        <div class="flex flex-col lg:flex-row min-h-[700px]">
+            
+            <!-- Left Side: Calendar & Manual Input -->
+            <div class="w-full lg:w-2/3 p-8 border-r border-white/10">
+                <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-2">Pilih Tarikh Sewaan</h2>
+                        <p class="text-white/50 text-sm">Pilih pada kalendar atau taip tarikh di bawah.</p>
+                    </div>
+                    <!-- Manual Date Inputs -->
+                    <div class="flex gap-2">
+                        <div class="flex flex-col">
+                            <label class="text-[10px] font-bold text-white/40 uppercase mb-1">Mula</label>
+                            <input type="date" id="input-start" class="bg-white/10 border border-white/20 rounded-lg p-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[10px] font-bold text-white/40 uppercase mb-1">Tamat</label>
+                            <input type="date" id="input-end" class="bg-white/10 border border-white/20 rounded-lg p-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+                <div id="calendar" class="h-[500px]"></div>
+            </div>
+
+            <!-- Right Side: Booking Panel -->
+            <div id="booking-panel" class="w-full lg:w-1/3 p-8 bg-black/30 flex flex-col">
+                <div id="instruction-view" class="flex-grow flex flex-col items-center justify-center text-center space-y-6">
+                    <div class="p-5 bg-blue-500/10 rounded-full border border-blue-500/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-xl">Pilih Tarikh</h3>
+                        <p class="text-white/40 mt-2">Sila pilih tarikh yang tiada tanda 'X'.</p>
+                    </div>
+                </div>
+
+                <div id="details-view" class="hidden space-y-8">
+                    <div class="bg-white/5 rounded-2xl p-6 border border-white/10 space-y-4">
+                        <h3 class="text-xs font-bold text-blue-500 uppercase tracking-widest">Ringkasan</h3>
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span class="text-white/50 text-sm">Hari:</span>
+                            <span id="display-days" class="text-white font-bold"></span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50 text-sm">Total:</span>
+                            <span id="display-price" class="text-3xl font-black text-green-400"></span>
+                        </div>
+                    </div>
+
+                    <form id="booking-form" class="space-y-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-white/40 uppercase ml-1">Nama Penuh</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 text-white outline-none" placeholder="Ahmad Mirul">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-white/40 uppercase ml-1">No. Telefon</label>
+                            <input type="tel" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 text-white outline-none" placeholder="012-XXXXXXX">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition-transform active:scale-95">
+                            Sahkan Tempahan (COD)
+                        </button>
+                    </form>
+                </div>
+
+                <div id="success-view" class="hidden flex-grow flex flex-col items-center justify-center text-center space-y-6">
+                    <div class="p-6 bg-green-500/20 rounded-full border border-green-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-white text-3xl">Berjaya!</h3>
+                    <p class="text-white/50">Kami akan hubungi anda segera.</p>
+                    <button onclick="window.location.href='index.html'" class="text-blue-500 font-bold hover:underline">Balik ke Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock data tarikh penuh (Format YYYY-MM-DD)
+        const bookedDates = ['2026-04-20', '2026-04-21', '2026-04-25'];
+        let calendar;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                selectable: true,
+                unselectAuto: false,
+                headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
+                
+                // Tandakan tarikh penuh dengan X
+                dayCellDidMount: function(info) {
+                    const dateStr = info.date.toISOString().split('T')[0];
+                    if (bookedDates.includes(dateStr)) {
+                        info.el.classList.add('booked-date');
+                    }
+                },
+
+                // Halang pilih tarikh yang dah penuh
+                selectAllow: function(selectInfo) {
+                    let curr = new Date(selectInfo.start);
+                    while (curr < selectInfo.end) {
+                        if (bookedDates.includes(curr.toISOString().split('T')[0])) return false;
+                        curr.setDate(curr.getDate() + 1);
+                    }
+                    return selectInfo.start >= new Date().setHours(0,0,0,0);
+                },
+
+                select: function(info) {
+                    updateUI(info.start, info.end);
+                    syncToInputs(info.start, info.end);
+                }
+            });
+            calendar.render();
+
+            // Event listener untuk input manual
+            document.getElementById('input-start').addEventListener('change', syncFromInputs);
+            document.getElementById('input-end').addEventListener('change', syncFromInputs);
+        });
+
+        function syncFromInputs() {
+            const startStr = document.getElementById('input-start').value;
+            const endStr = document.getElementById('input-end').value;
+            if (startStr && endStr) {
+                const start = new Date(startStr);
+                const end = new Date(endStr);
+                end.setDate(end.getDate() + 1); // FullCalendar end is exclusive
+                calendar.select(start, end);
+            }
+        }
+
+        function syncToInputs(start, end) {
+            document.getElementById('input-start').value = start.toISOString().split('T')[0];
+            const displayEnd = new Date(end);
+            displayEnd.setDate(displayEnd.getDate() - 1);
+            document.getElementById('input-end').value = displayEnd.toISOString().split('T')[0];
+        }
+
+        function updateUI(start, end) {
+            const diffDays = Math.ceil(Math.abs(end - start) / (1000 * 60 * 60 * 24));
+            const price = diffDays > 3 ? 20 : 30;
+            const total = diffDays * price;
+
+            document.getElementById('instruction-view').classList.add('hidden');
+            document.getElementById('details-view').classList.remove('hidden');
+            document.getElementById('display-days').textContent = `${diffDays} Hari`;
+            document.getElementById('display-price').textContent = `RM ${total}`;
+        }
+
+        document.getElementById('booking-form').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const name = e.target.querySelector('input[type="text"]').value;
+            const phone = e.target.querySelector('input[type="tel"]').value;
+            const startDate = document.getElementById('input-start').value;
+            const endDate = document.getElementById('input-end').value;
+            
+            // Format mesej untuk WhatsApp
+            const message = `Salam Mirul Maker, saya nak sewa Nikon D3100.%0A%0A` +
+                            `*Butiran Tempahan:*%0A` +
+                            `• Nama: ${name}%0A` +
+                            `• No. Tel: ${phone}%0A` +
+                            `• Tarikh: ${startDate} hingga ${endDate}%0A` +
+                            `• Tempoh: ${selectedRange.totalDays} Hari%0A` +
+                            `• *Total Harga: RM ${selectedRange.totalPrice}*%0A%0A` +
+                            `Sila sahkan tempahan saya. Terima kasih!`;
+
+            // Tukar nombor di bawah kepada nombor telefon anda (contoh: 60123456789)
+            const myPhoneNumber = "60123456789"; 
+            const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${message}`;
+
+            // Tunjukkan success view
+            document.getElementById('details-view').classList.add('hidden');
+            document.getElementById('success-view').classList.remove('hidden');
+
+            // Buka WhatsApp di tab baru
+            window.open(whatsappUrl, '_blank');
+        };
+    </script>
+</body>
+</html>

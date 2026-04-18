@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ms" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirul MAKER</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Mirul Maker</h1>
+        <nav>
+          <a href="#pengenalan-section" class="nav-button">
+            <span>Pengenalan</span>
+          </a>
+          <a href="#portfolio-section" class="nav-button">
+            <span>Portfolio</span>
+          </a>
+          <a href="#sewa-kamera-section" class="nav-button">
+            <span>Sewa Kamera</span>
+          </a>
+        </nav>
+      </div>
+      <button id="toggle-theme" class="theme-button">
+        <span>☀️ Light</span>
+      </button>
+    </header>
+
+    <main class="content-container">
+      <section id="pengenalan-section" class="intro-section">
+        <h2>MIRUL MAKER</h2>
+        <p>
+          Saya adalah seorang maker yang sentiasa bereksperimen. Dari membina
+          server mini menggunakan Raspberry Pi,Electronic part hingga
+          merekabentuk semula prototaip laman web dengan fokus pada kelajuan,
+          ruang ini adalah tempat ideologi teknikal saya menjadi kenyataan.
+        </p>
+        <p>
+          Terokai portfolio Mirul Maker untuk melihat bagaimana Mirul Maker
+          menggabungkan teknologi terkini dengan reka bentuk yang menawan untuk
+          memberikan hasil yang memberi impak.
+        </p>
+        <a href="#portfolio-section" class="cta-button"
+          ><span>Lihat Portfolio</span></a
+        >
+      </section>
+
+      <section id="portfolio-section">
+        <h2>Project-project Terkini 💡</h2>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>
+              <a href="raspberry_pi_cyberdeck.html"
+                >Project 1: Raspberry Pi4 Cyberdeck</a
+              >
+            </h3>
+            <p>
+              Membina sebuah 'Cyberdeck' mudah alih menggunakan Raspberry Pi 4.
+              Cyberdeck ialah komputer kustom yang dibina untuk tujuan spesifik,
+              selalunya dengan reka bentuk futuristik. Projek ini menggunakan
+              Raspberry Pi, sejenis 'Single-Board Computer' (SBC) - komputer
+              lengkap pada satu papan litar - untuk mencipta peranti yang kompak
+              dan berkuasa.
+            </p>
+            <span class="tech-tag">#Raspberrypi</span>
+            <span class="tech-tag">#Terminal</span>
+            <br />
+            <a
+              href="raspberry_pi_cyberdeck.html"
+              class="cta-button"
+              style="margin-top: 15px"
+              ><span>Lihat Lagi</span></a
+            >
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="70">70%</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Project 2: Raspberry Pi zero 2w server</h3>
+            <p>
+              Project ini memanfaatkan Raspberry Pi Zero 2 W yang sangat ringkas
+              dan berdaya rendah untuk membangun sebuah server mini. D3.js.
+            </p>
+            <span class="tech-tag">#Raspberrypi</span>
+            <span class="tech-tag">#Linux</span>
+            <span class="tech-tag">#Server</span>
+            <span class="tech-tag">#HomeServer</span>
+            <span class="tech-tag">#SSH</span>
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="100">100%</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Project 3: Laman Web</h3>
+            <p>
+              Reka bentuk semula laman web team dengan penekanan pada SEO dan
+              kelajuan muatan yang optimum, dihoskan dengan cekap menggunakan
+              Vercel.
+            </p>
+            <span class="tech-tag">#HTML5</span>
+            <span class="tech-tag">#WEB</span>
+            <span class="tech-tag">#nginx</span>
+            <span class="tech-tag">#WinSCP</span>
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="55">55%</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>
+              <a
+                href="#"
+                onclick="showSection('street-shooting-section')"
+                style="color: var(--text-color); text-decoration: none"
+                >Street Shooting Photography</a
+              >
+            </h3>
+            <p>
+              Meneroka intipati kehidupan urban melalui lensa fotografi, setiap
+              imej merakam naratif unik dari jalanan yang sibuk dan detik-detik
+              spontan yang tidak dijangka.
+            </p>
+            <span class="tech-tag">#Photography</span>
+            <span class="tech-tag">#Street</span>
+            <span class="tech-tag">#Art</span>
+            <br />
+            <a
+              href="#"
+              onclick="showSection('street-shooting-section')"
+              class="cta-button"
+              style="margin-top: 15px"
+              ><span>Lihat Lagi</span></a
+            >
+          </article>
+
+          <article class="project-card">
+            <h3>Project 4: ESP32 CCTV</h3>
+            <p>
+              Membina sebuah CCTV kecil menggunakan ESP32 dengan sambungan WiFi.
+              Projek ini membolehkan pemantauan video secara langsung melalui
+              rangkaian tempatan.
+            </p>
+            <span class="tech-tag">#ESP32</span>
+            <span class="tech-tag">#CCTV</span>
+            <span class="tech-tag">#WiFi</span>
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="0">0%</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Project 5: Raspberry Pi 5 Desktop % Home Server</h3>
+            <p>
+              Membangunkan sistem desktop yang ringkas dan berkuasa menggunakan
+              Raspberry Pi 5, sesuai untuk tugasan harian dan pembangunan
+              projek. Projek ini akan menonjolkan keupayaan Raspberry Pi 5
+              sebagai alternatif desktop yang cekap tenaga.
+            </p>
+            <span class="tech-tag">#RaspberryPi5</span>
+            <span class="tech-tag">#Desktop</span>
+            <span class="tech-tag">#Linux</span>
+            <span class="tech-tag">#Homelab</span>
+            <span class="tech-tag">#Server</span>
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="90">90%</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Project 6: Smart Dustbin guna Arduino Uno</h3>
+            <p>
+              Membangunkan sistem tong sampah pintar menggunakan Arduino Uno
+              untuk pengasingan sisa automatik dan pengurusan sampah yang lebih
+              cekap.
+            </p>
+            <span class="tech-tag">#Arduino</span>
+            <span class="tech-tag">#IoT</span>
+            <span class="tech-tag">#SmartHome</span>
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="75">75%</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Project Game 7: Cyberpunk Runner</h3>
+            <p>
+              Membangunkan permainan 2D "endless runner" dengan tema cyberpunk.
+              Pemain akan mengawal watak yang berlari melalui bandar futuristik,
+              mengelakkan halangan dan mengumpul mata.
+            </p>
+            <span class="tech-tag">#GameDev</span>
+            <span class="tech-tag">#JavaScript</span>
+            <span class="tech-tag">#HTML5Canvas</span>
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="25">25%</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>
+              <a
+                href="baju_street_shooter.html"
+                style="color: var(--text-color); text-decoration: none"
+                >Project 8: Baju Street Shooter</a
+              >
+            </h3>
+            <p>
+              Pembangunan reka bentuk baju bertemakan 'Street Shooter' dengan
+              elemen cyberpunk dan grafik moden yang unik.
+            </p>
+            <span class="tech-tag">#Fashion</span>
+            <span class="tech-tag">#Design</span>
+            <span class="tech-tag">#Streetwear</span>
+            <br />
+            <a
+              href="baju_street_shooter.html"
+              class="cta-button"
+              style="margin-top: 15px"
+              ><span>Lihat Lagi</span></a
+            >
+            <div class="project-progress-container">
+              <div class="project-progress-bar" data-width="100">100%</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="sewa-kamera-section">
+        <h2>Sewa Kamera 📸</h2>
+        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;">
+          Dapatkan kualiti DSLR dengan harga bajet. Sesuai untuk pelajar dan hobbyist.
+        </p>
+        <div style="display: flex; justify-content: center; padding: 20px 0;">
+          <!-- Nikon D3100 Premium Card -->
+          <article class="project-card" style="max-width: 450px; width: 100%; border: 1px solid rgba(0, 122, 255, 0.3); position: relative; overflow: hidden;">
+            <!-- Price Badge -->
+            <div style="position: absolute; top: 20px; right: 20px; background: #007aff; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-align: center;">
+              <span style="font-size: 0.8em; display: block; opacity: 0.8; line-height: 1;">Mulai</span>
+              RM20 <span style="font-size: 0.7em;">/HARI</span>
+            </div>
+            
+            <div
+              style="
+                height: 280px;
+                background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80');
+                background-size: cover;
+                background-position: center;
+                border-radius: 12px;
+                margin-bottom: 20px;
+                transition: transform 0.5s ease;
+              "
+              onmouseover="this.style.transform='scale(1.05)'"
+              onmouseout="this.style.transform='scale(1)'"
+            ></div>
+            
+            <div style="padding: 0 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="margin: 0; font-size: 1.5em; color: #ffffff;">Nikon D3100 DSLR</h3>
+              </div>
+              
+              <div style="background: rgba(0, 122, 255, 0.2); border-left: 4px solid #007aff; padding: 12px; margin-bottom: 15px; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0; font-weight: bold; color: #ffffff; font-size: 0.95em; line-height: 1.6;">
+                  💰 Harga Sewa: <br>
+                  <span style="color: #ffffff;">• 1-3 Hari:</span> RM30/hari <br>
+                  <span style="color: #ffffff;">• >3 Hari:</span> RM20/hari <span style="color: #00FF9D;">(Jimat 33%!)</span>
+                </p>
+              </div>
+
+              <p style="font-size: 0.9em; margin-bottom: 20px; opacity: 0.8; line-height: 1.5;">
+                Pakej lengkap termasuk Lensa 18-55mm, beg kamera, memory card 32GB, dan 2 unit bateri.
+              </p>
+              
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px;">
+                <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); border-color: rgba(0, 122, 255, 0.2);">#FullHD_Video</span>
+                <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); border-color: rgba(0, 122, 255, 0.2);">#14.2MP</span>
+                <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); border-color: rgba(0, 122, 255, 0.2);">#BeginnerFriendly</span>
+              </div>
+              
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <a
+                  href="booking.html?service=nikon-d3100"
+                  class="cta-button"
+                  style="
+                    display: flex;
+                    width: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 18px;
+                    font-size: 1.1em;
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    background-color: #007aff;
+                    color: white !important;
+                    border: none;
+                    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.4);
+                    text-transform: uppercase;
+                  "
+                  ><span>RESERVE NOW</span></a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills-section">
+        <h2>Kemahiran Web Pembangunan</h2>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <h3>HTML</h3>
+            <div class="progress-bar-container">
+              <div class="progress-bar" data-width="70.6">70.6%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <h3>CSS</h3>
+            <div class="progress-bar-container">
+              <div class="progress-bar" data-width="43.7">43.7%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <h3>TypeScript</h3>
+            <div class="progress-bar-container">
+              <div class="progress-bar" data-width="27.6">27.6%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <h3>JavaScript</h3>
+            <div class="progress-bar-container">
+              <div class="progress-bar" data-width="30.3">30.3%</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="official-site-section"
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 50px;
+          text-align: center;
+          padding: 0 5%;
+        "
+      >
+        <p>Lihat lebih banyak hasil kerja kami di laman web rasmi:</p>
+        <div style="width: 100%; display: flex; justify-content: center">
+          <a
+            href="https://sites.google.com/view/mirul-studio/home"
+            target="_blank"
+            class="glass-button"
+            ><span>Lawati Mirul Studio Official Website</span></a
+          >
+        </div>
+      </section>
+
+      <section id="social-section">
+        <h2>Ikuti Kami di Media Sosial</h2>
+        <div class="social-grid">
+          <a
+            href="https://www.tiktok.com/@mirulls7?_t=ZS-90Ktjp8hrRY&_r=1"
+            target="_blank"
+            class="social-button"
+          >
+            <span>TikTok</span>
+            <span class="ripple-ring"></span>
+            <span class="ripple-ring"></span>
+          </a>
+          <a
+            href="https://github.com/UrKairulhakim17"
+            target="_blank"
+            class="social-button"
+          >
+            <span>Github</span>
+            <span class="ripple-ring"></span>
+            <span class="ripple-ring"></span>
+          </a>
+          <a
+            href="https://www.instagram.com/_kairuls._?igsh=MWF0NnNnZmZpZXlrYg%3D%3D&utm_source=qr"
+            target="_blank"
+            class="social-button"
+          >
+            <span>Instagram</span>
+            <span class="ripple-ring"></span>
+            <span class="ripple-ring"></span>
+          </a>
+          <a
+            href="https://makerworld.com/en/@user_2207208271"
+            target="_blank"
+            class="social-button"
+          >
+            <span>Maker World</span>
+            <span class="ripple-ring"></span>
+            <span class="ripple-ring"></span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
