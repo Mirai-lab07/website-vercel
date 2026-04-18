@@ -236,29 +236,26 @@
         </p>
         <div style="display: flex; justify-content: center; padding: 20px 0;">
           <!-- Nikon D3100 Premium Card -->
-          <article class="project-card" style="max-width: 450px; width: 100%; border: 1px solid rgba(0, 122, 255, 0.3); position: relative; overflow: hidden;">
+          <article class="project-card" style="max-width: 450px; width: 100%; border: 1px solid rgba(0, 122, 255, 0.3); position: relative; overflow: hidden; display: flex; flex-direction: column;">
             <!-- Price Badge -->
             <div style="position: absolute; top: 20px; right: 20px; background: #007aff; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-align: center;">
               <span style="font-size: 0.8em; display: block; opacity: 0.8; line-height: 1;">Mulai</span>
               RM20 <span style="font-size: 0.7em;">/HARI</span>
             </div>
-            
-            <div
-              style="
-                height: 280px;
-                background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80');
-                background-size: cover;
-                background-position: center;
-                border-radius: 12px;
-                margin-bottom: 20px;
-                transition: transform 0.5s ease;
-              "
-              onmouseover="this.style.transform='scale(1.05)'"
-              onmouseout="this.style.transform='scale(1)'"
-            ></div>
-            
-            <div style="padding: 0 10px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+
+            <!-- Image Container with Gradient Blur Header/Footer -->
+            <div style="position: relative; height: 350px; background: #0a0a0a; overflow: hidden; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05);">
+               <!-- Main Image -->
+               <img src="image/nikon main d3100.PNG" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 1;">
+
+               <!-- Gradient Blur Header -->
+               <div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); mask-image: linear-gradient(to bottom, black, transparent); -webkit-mask-image: linear-gradient(to bottom, black, transparent); z-index: 2;"></div>
+
+               <!-- Gradient Blur Footer -->
+               <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); mask-image: linear-gradient(to top, black, transparent); -webkit-mask-image: linear-gradient(to top, black, transparent); z-index: 2;"></div>
+            </div>
+
+            <div style="padding: 0 10px; flex-grow: 1;">              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <h3 style="margin: 0; font-size: 1.5em; color: #ffffff;">Nikon D3100 DSLR</h3>
               </div>
               
