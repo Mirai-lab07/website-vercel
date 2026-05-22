@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
 /* --- Variable Warna Global --- */
 :root {
   /* Tema Gelap (AMOLED) sebagai lalai */
@@ -185,6 +187,69 @@ button {
 .page-nav-button:active,
 .glass-button:active {
     background-color: transparent;
+}
+
+.nothing-font {
+  font-family: 'Silkscreen', cursive !important;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(0, 255, 157, 0.2) !important;
+}
+
+.nothing-font h3 {
+  color: #00FF9D !important; /* Classic Retro/OLED Green */
+  text-shadow: 2px 2px 0px #000;
+}
+
+.nothing-font:hover {
+  animation: pixel-flicker 0.3s infinite;
+  border-color: #00FF9D !important;
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.3), inset 0 0 10px rgba(0, 255, 157, 0.2);
+  background-color: rgba(0, 255, 157, 0.05);
+}
+
+/* Enhanced 8-bit Glitch Effect */
+.nothing-font:hover h3 {
+  animation: pixel-glitch 0.2s steps(2) infinite;
+  text-shadow: 3px 0 #ff00ff, -3px 0 #00ffff;
+}
+
+/* Smoother but still Pixelated Progress Bar */
+.nothing-font .project-progress-bar {
+  background: repeating-linear-gradient(
+    -45deg,
+    #00FF9D,
+    #00FF9D 15px,
+    #00d181 15px,
+    #00d181 30px
+  );
+  background-size: 42.42px 42.42px; /* Calculated for smooth diagonal tiling */
+  animation: pixel-load-smooth 1s linear infinite;
+  color: #000;
+  text-shadow: none;
+  font-size: 0.8em;
+}
+
+@keyframes pixel-flicker {
+  0% { opacity: 1; }
+  25% { opacity: 0.98; }
+  50% { opacity: 1; }
+  75% { opacity: 0.99; }
+  100% { opacity: 1; }
+}
+
+@keyframes pixel-glitch {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, -1px); }
+  50% { transform: translate(-1px, 1px); }
+  75% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes pixel-load-smooth {
+  from { background-position: 0 0; }
+  to { background-position: 42.42px 0; }
 }
 
 /* --- Main Content & Typography --- */
