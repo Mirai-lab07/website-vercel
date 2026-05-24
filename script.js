@@ -103,38 +103,42 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 6. Interactive 3D Card Effect for Nikon D3100
-const nikonCard = document.querySelector('article[style*="nikon-d3100"]'); // Try to find the card by link or image
-// Alternatively, let's find it by identifying the specific content
-const cards = document.querySelectorAll('.project-card');
-let nikonTarget = null;
-cards.forEach(card => {
-    if (card.innerHTML.includes('Nikon D3100')) {
-        nikonTarget = card;
-    }
-});
-
-if (nikonTarget) {
-    nikonTarget.addEventListener('mousemove', (e) => {
-        const rect = nikonTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        nikonTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-        nikonTarget.style.transition = 'none';
-    });
+// 6. Interactive 3D Card Effect for Projects and Buttons
+function init3DTilt() {
+    const tiltElements = document.querySelectorAll('.project-card, .cta-button, .nav-button, .theme-button, .social-button, .glass-button, .back-button');
     
-    nikonTarget.addEventListener('mouseleave', () => {
-        nikonTarget.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-        nikonTarget.style.transition = 'transform 0.5s ease';
+    tiltElements.forEach(element => {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Adjust intensity: cards rotate less than buttons
+            const isCard = element.classList.contains('project-card');
+            const intensity = isCard ? 20 : 40; 
+            
+            const rotateX = ((y - centerY) / centerY) * intensity;
+            const rotateY = ((centerX - x) / centerX) * intensity;
+            
+            const scale = isCard ? 1.05 : 1.15;
+            
+            element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, ${scale})`;
+            element.style.transition = 'transform 0.1s ease'; 
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            // Remove inline transform to allow CSS transitions/transforms (like .visible) to work
+            element.style.transform = ''; 
+            element.style.transition = 'transform 0.5s ease';
+        });
     });
 }
+
+// Initialize 3D tilt
+init3DTilt();
 
 // 3. Muatkan Tema semasa laman dimuatkan
 document.addEventListener('DOMContentLoaded', loadTheme);
@@ -192,6 +196,6 @@ if (skillsSection) {
 
 // Debugging logs
 console.log("script.js loaded and executing.");
-if (portfolioSection) {
-    console.log("portfolioSection found, observer initialized.");
+if (projectCards.length > 0) {
+    console.log("Project cards found, observers and 3D effects initialized.");
 }

@@ -137,13 +137,15 @@ button {
   font-weight: bold;
   text-decoration: none;
   color: var(--text-color) !important;
-  transition: color 0.4s ease, background-color 0.4s ease;
+  transition: color 0.4s ease, background-color 0.4s ease, transform 0.1s ease;
   z-index: 0; /* Establish stacking context */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* Span inside button for text, to keep it above the pseudo-element */
@@ -342,6 +344,8 @@ h2 {
   transition: box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
   transform: translateY(30px);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .project-card.visible {
@@ -642,6 +646,9 @@ body.slide-out {
     text-align: center;
     cursor: pointer;
     z-index: 1;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.1s ease, background-color 0.4s ease;
 }
 
 /* The text content */
